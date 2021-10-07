@@ -1,6 +1,6 @@
 const NAME_PATTERN=RegExp("^[A-Z][a-z]{2,}$");
 const ADDRESS_PATTERN=RegExp("^[A-Z0-9a-z ]{4,}$");
-const CITY_STATE_PATTERN=RegExp("^([A-Z][a-z]{3,})( )([A-Z][a-z]{3,})$");
+const CITY_STATE_PATTERN=RegExp("^([A-Z][a-z]{3,})( )?([A-Z][a-z]{3,})?$");
 const EMAIL_ID_PATTERN = RegExp("^[a-z0-9]+([+._-][a-z0-9]+){0,1}@[a-z0-9]+[.][a-z]{2,4}([.][a-z]{2,4}){0,1}$");
 const PHONE_NUMBER_PATTERN=RegExp("^[0-9]{2}[ ][0-9]{10}$");
 const ZIP_PATTERN=RegExp("[0-9]{3}[ ]?[0-9]{3}$");
@@ -145,12 +145,32 @@ class Contact
 
 }
 
+class AddressBook
+{
+    addressBook;
+    constructor() 
+    {
+        this.addressBook = new Array();
+    }
+
+    addContact(contact)
+    {
+         this.addressBook.push(contact)
+    }
+}
+
 try 
 {
-    let contact = new Contact("Phoebe","Buffay","abc street","Neww York","United States","456890","01 1234522234","abc@example.com")
-    
+    var contact1 = new Contact("Phoebe","Buffay","abc street","Neww York","United States","456890","01 1234522234","abc@example.com");
+    var contact2 = new Contact("Joey","Tribbiani","eee street","Abcd","United States","123123","01 3453451234","joey@example.com")
+
 } 
 catch (e)
 {
     console.error(e);
 }
+
+let addressBook1=new AddressBook();
+addressBook1.addContact(contact1);
+addressBook1.addContact(contact2);
+console.log(addressBook1)
