@@ -1,3 +1,9 @@
+const NAME_PATTERN=RegExp("^[A-Z][a-z]{2,}$");
+const ADDRESS_PATTERN=RegExp("^[A-Z0-9a-z ]{4,}$");
+const CITY_STATE_PATTERN=RegExp("^([A-Z][a-z]{3,})( )([A-Z][a-z]{3,})$");
+const EMAIL_ID_PATTERN = RegExp("^[a-z0-9]+([+._-][a-z0-9]+){0,1}@[a-z0-9]+[.][a-z]{2,4}([.][a-z]{2,4}){0,1}$");
+const PHONE_NUMBER_PATTERN=RegExp("^[0-9]{2}[ ][0-9]{10}$");
+const ZIP_PATTERN=RegExp("[0-9]{3}[ ]?[0-9]{3}$");
 class Contact 
 {
 
@@ -19,7 +25,14 @@ class Contact
     }
     set firstName(firstName)
     {
-        this._firstName=firstName;
+        if (NAME_PATTERN.test(firstName))
+        {
+            this._firstName = firstName;
+        }
+        else 
+        {
+            throw "firstName is Incorrect";
+        }
     }
     get lastName()
     {
@@ -27,7 +40,15 @@ class Contact
     }
     set lastName(lastName)
     {
-        this._lastName=lastName;
+        
+        if (NAME_PATTERN.test(lastName))
+        {
+            this._lastName = lastName;
+        }
+        else 
+        {
+            throw "lastName is Incorrect";
+        }
     }
     get address()
     {
@@ -35,7 +56,14 @@ class Contact
     }
     set address(address)
     {
-        this._address=address;
+        if (ADDRESS_PATTERN.test(address))
+        {
+            this._address = address;
+        }
+        else 
+        {
+            throw "address is Incorrect";
+        }
     }
     get city()
     {
@@ -43,7 +71,14 @@ class Contact
     }
     set city(city)
     {
-        this._city=city;
+        if (CITY_STATE_PATTERN.test(city))
+        {
+            this._city = city;
+        }
+        else 
+        {
+            throw "city is Incorrect";
+        }
     }
     get state()
     {
@@ -51,7 +86,14 @@ class Contact
     }
     set state(state)
     {
-        this._state=state;
+        if (CITY_STATE_PATTERN.test(state))
+        {
+            this._state = state;
+        }
+        else 
+        {
+            throw "state is Incorrect";
+        }
     }
     get zip()
     {
@@ -59,7 +101,14 @@ class Contact
     }
     set zip(zip)
     {
-        this._zip=zip;
+        if (ZIP_PATTERN.test(zip))
+        {
+            this._zip = zip;
+        }
+        else 
+        {
+            throw "zip is Incorrect";
+        }
     }
     get phoneNumber()
     {
@@ -67,7 +116,15 @@ class Contact
     }
     set phoneNumber(phoneNumber)
     {
-        this._phoneNumber=phoneNumber;
+        if (PHONE_NUMBER_PATTERN.test(phoneNumber))
+        {
+            this._phoneNumber = phoneNumber;
+        }
+        else 
+        {
+            throw "phoneNumber is Incorrect";
+        }
+
     }
     get email()
     {
@@ -75,8 +132,25 @@ class Contact
     }
     set email(email)
     {
-        this._email=email;
+        if (EMAIL_ID_PATTERN.test(email))
+        {
+            this._email = email;
+        }
+        else 
+        {
+            throw "email is Incorrect";
+        }
     }
 
 
+}
+
+try 
+{
+    let contact = new Contact("Phoebe","Buffay","abc street","Neww York","United States","456890","01 1234522234","abc@example.com")
+    
+} 
+catch (e)
+{
+    console.error(e);
 }
