@@ -145,19 +145,25 @@ class Contact
 
 }
 
-class AddressBook
-{
-    addressBook;
-    constructor() 
-    {
-        this.addressBook = new Array();
-    }
+// class AddressBook
+// {
+//     addressBook;
+//     constructor() 
+//     {
+//         this.addressBook = new Array();
+//     }
 
-    addContact(contact)
-    {
-         this.addressBook.push(contact)
-    }
-}
+//     addContact(contact)
+//     {
+//          this.addressBook.push(contact)
+//     }
+
+//     get addressBook()
+//     {
+//         return this._addressBook;
+//     }
+
+// }
 
 try 
 {
@@ -170,7 +176,45 @@ catch (e)
     console.error(e);
 }
 
-let addressBook1=new AddressBook();
-addressBook1.addContact(contact1);
-addressBook1.addContact(contact2);
-console.log(addressBook1)
+let addressBook=new Array();
+addressBook.push(contact1);
+addressBook.push(contact2);
+console.log(addressBook);
+
+function editContact(name,fieldToReplace,valueToReplace)
+{
+   let contactToEdit= addressBook.find((contact) => contact.firstName == name)
+   contactToEdit.fieldToReplace=valueToReplace;
+   switch (fieldToReplace.toLowerCase()) 
+   {
+       case "firstname":
+           contactToEdit.firstName = valueToReplace;
+           break;
+       case "lastname":
+           contactToEdit.lastName = valueToReplace;
+           break;
+       case "address":
+           contactToEdit.address = valueToReplace;
+           break;
+       case "city":
+           contactToEdit.city = valueToReplace;
+           break;
+       case "state":
+           contactToEdit.state = valueToReplace;
+           break;
+       case "zip":
+           contactToEdit.zip = valueToReplace;
+           break;
+       case "phonenumber":
+           contactToEdit.phoneNumber = valueToReplace;
+           break;
+       case "email":
+           contactToEdit.email = valueToReplace;
+           break;
+   
+   }
+}
+
+
+editContact("Joey","lastName","Williams");
+console.log(addressBook);
