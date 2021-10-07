@@ -111,30 +111,12 @@ class Contact {
 
 }
 
-// class AddressBook
-// {
-//     addressBook;
-//     constructor() 
-//     {
-//         this.addressBook = new Array();
-//     }
-
-//     addContact(contact)
-//     {
-//          this.addressBook.push(contact)
-//     }
-
-//     get addressBook()
-//     {
-//         return this._addressBook;
-//     }
-
-// }
 
 try {
     var contact1 = new Contact("Phoebe", "Buffay", "abc street", "Neww York", "United States", "456890", "01 1234522234", "abc@example.com");
     var contact2 = new Contact("Joey", "Tribbiani", "eee street", "Abcd", "United States", "123123", "01 3453451234", "joey@example.com");
     var contact3 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
+    var contact4 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
 
 
 }
@@ -144,9 +126,29 @@ catch (e) {
 
 //UC3
 let addressBook = new Array();
-addressBook.push(contact1);
-addressBook.push(contact2);
-addressBook.push(contact3);
+function addContact(contact)
+{
+    //UC7
+    let contactExists=addressBook.filter(existingContact=>existingContact.firstName==contact.firstName 
+                                  && existingContact.lastName==contact.lastName)
+                                 .reduce((totalContacts)=>totalContacts+1,0);
+
+    if(contactExists==0)
+    {
+        addressBook.push(contact);
+    }
+    else
+    {
+        console.log(" duplicate contact")
+
+    }
+
+}
+addContact(contact1);
+addContact(contact2);
+addContact(contact3);
+addContact(contact4);
+
 
 console.log(addressBook);
 
@@ -199,3 +201,4 @@ console.log(addressBook);
 //UC6
 let numberOfContacts= addressBook.reduce((totalContacts)=>totalContacts+1,0);
 console.log(numberOfContacts)
+
