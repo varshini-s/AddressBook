@@ -126,19 +126,16 @@ catch (e) {
 
 //UC3
 let addressBook = new Array();
-function addContact(contact)
-{
+function addContact(contact) {
     //UC7
-    let contactExists=addressBook.filter(existingContact=>existingContact.firstName==contact.firstName 
-                                  && existingContact.lastName==contact.lastName)
-                                 .reduce((totalContacts)=>totalContacts+1,0);
+    let contactExists = addressBook.filter(existingContact => existingContact.firstName == contact.firstName
+        && existingContact.lastName == contact.lastName)
+        .reduce((totalContacts) => totalContacts + 1, 0);
 
-    if(contactExists==0)
-    {
+    if (contactExists == 0) {
         addressBook.push(contact);
     }
-    else
-    {
+    else {
         console.log(" duplicate contact")
 
     }
@@ -191,7 +188,7 @@ console.log(addressBook);
 //UC5
 const deleteContact = (name) => {
     let indexToDelete = addressBook
-                      .findIndex((contact) => contact.firstName == name);
+        .findIndex((contact) => contact.firstName == name);
     addressBook.splice(indexToDelete, 1);
 };
 
@@ -199,24 +196,69 @@ deleteContact("Ross");
 console.log(addressBook);
 
 //UC6
-let numberOfContacts= addressBook.reduce((totalContacts)=>totalContacts+1,0);
+let numberOfContacts = addressBook.reduce((totalContacts) => totalContacts + 1, 0);
 console.log(numberOfContacts)
 
 
 //UC 8
 console.log("Finding a contact in given city")
-let findInCity=addressBook.filter(contact=>contact.city=="Paris").find(contact=>contact.firstName=="Joey")
+let findInCity = addressBook.filter(contact => contact.city == "Paris").find(contact => contact.firstName == "Joey")
 console.log(findInCity)
 
 console.log("Finding a contact in given state")
-let findInState=addressBook.filter(contact=>contact.state=="United States").find(contact=>contact.firstName=="Joey")
+let findInState = addressBook.filter(contact => contact.state == "United States").find(contact => contact.firstName == "Joey")
 console.log(findInState)
 
 //UC9
 console.log("view all contacts in given city");
-let findAllInCity=addressBook.filter(contact=>contact.city=="Paris")
+let findAllInCity = addressBook.filter(contact => contact.city == "Paris").map(contact => contact.firstName + " " + contact.lastName)
 console.log(findAllInCity)
 
 console.log("view all contacts in given State");
-let findAllInState=addressBook.filter(contact=>contact.state=="United States")
+let findAllInState = addressBook.filter(contact => contact.state == "United States").map(contact => contact.firstName + " " + contact.lastName)
 console.log(findAllInState)
+
+
+let contactToCityMap = new Map();
+let contactToStateMap = new Map();
+
+function mapContactToCityAndState(contact) {
+    if (contactToCityMap.has(contact.city)) {
+        let contactInCity = contactToCityMap.get(contact.city);
+        contactInCity.push(contact.firstName + " " + contact.lastName);
+    }
+    else {
+        let contactInCity = new Array();
+        contactInCity.push(contact.firstName + " " + contact.lastName);
+        contactToCityMap.set(contact.city, contactInCity);
+    }
+
+    if (contactToStateMap.has(contact.state)) {
+        let contactInState = contactToStateMap.get(contact.state);
+        contactInState.push(contact.firstName + " " + contact.lastName);
+    }
+    else {
+        let contactInState = new Array();
+        contactInState.push(contact.firstName + " " + contact.lastName);
+        contactToStateMap.set(contact.state, contactInState);
+    }
+}
+addressBook.forEach(mapContactToCityAndState);
+console.log(contactToCityMap)
+console.log(contactToStateMap)
+
+//UC10
+let countByCityMap = new Map();
+let countByStateMap = new Map();
+
+contactToCityMap.forEach((value, key, map) => {
+    countByCityMap.set(key, value.length)
+});
+
+contactToStateMap.forEach((value, key, map) => {
+    countByStateMap.set(key, value.length)
+});
+
+console.log(countByCityMap)
+console.log(countByStateMap)
+
