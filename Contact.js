@@ -4,9 +4,11 @@ const CITY_STATE_PATTERN = RegExp("^([A-Z][a-z]{3,})( )?([A-Z][a-z]{3,})?$");
 const EMAIL_ID_PATTERN = RegExp("^[a-z0-9]+([+._-][a-z0-9]+){0,1}@[a-z0-9]+[.][a-z]{2,4}([.][a-z]{2,4}){0,1}$");
 const PHONE_NUMBER_PATTERN = RegExp("^[0-9]{2}[ ][0-9]{10}$");
 const ZIP_PATTERN = RegExp("[0-9]{3}[ ]?[0-9]{3}$");
-class Contact {
+class Contact 
+{
 
-    constructor(...params) {
+    constructor(...params) 
+    {
         this.firstName = params[0]
         this.lastName = params[1]
         this.address = params[2]
@@ -17,135 +19,165 @@ class Contact {
         this.email = params[7]
     }
 
-    get firstName() {
+    get firstName() 
+    {
         return this._firstName;
     }
-    set firstName(firstName) {
-        if (NAME_PATTERN.test(firstName)) {
+    set firstName(firstName) 
+    {
+        if (NAME_PATTERN.test(firstName)) 
+        {
             this._firstName = firstName;
         }
         else {
             throw "firstName is Incorrect";
         }
     }
-    get lastName() {
+    get lastName() 
+    {
         return this._lastName;
     }
-    set lastName(lastName) {
+    set lastName(lastName) 
+    {
 
-        if (NAME_PATTERN.test(lastName)) {
+        if (NAME_PATTERN.test(lastName)) 
+        {
             this._lastName = lastName;
         }
-        else {
+        else 
+        {
             throw "lastName is Incorrect";
         }
     }
-    get address() {
+    get address() 
+    {
         return this._address;
     }
-    set address(address) {
-        if (ADDRESS_PATTERN.test(address)) {
+    set address(address)
+    {
+        if (ADDRESS_PATTERN.test(address)) 
+        {
             this._address = address;
         }
-        else {
+        else 
+        {
             throw "address is Incorrect";
         }
     }
-    get city() {
+    get city() 
+    {
         return this._city;
     }
-    set city(city) {
-        if (CITY_STATE_PATTERN.test(city)) {
+    set city(city) 
+    {
+        if (CITY_STATE_PATTERN.test(city)) 
+        {
             this._city = city;
         }
-        else {
+        else 
+        {
             throw "city is Incorrect";
         }
     }
-    get state() {
+    get state() 
+    {
         return this._state;
     }
-    set state(state) {
-        if (CITY_STATE_PATTERN.test(state)) {
+    set state(state) 
+    {
+        if (CITY_STATE_PATTERN.test(state)) 
+        {
             this._state = state;
         }
-        else {
+        else 
+        {
             throw "state is Incorrect";
         }
     }
-    get zip() {
+    get zip() 
+    {
         return this._zip;
     }
-    set zip(zip) {
-        if (ZIP_PATTERN.test(zip)) {
+    set zip(zip) 
+    {
+        if (ZIP_PATTERN.test(zip)) 
+        {
             this._zip = zip;
         }
         else {
             throw "zip is Incorrect";
         }
     }
-    get phoneNumber() {
+    get phoneNumber() 
+    {
         return this._phoneNumber;
     }
-    set phoneNumber(phoneNumber) {
-        if (PHONE_NUMBER_PATTERN.test(phoneNumber)) {
+    set phoneNumber(phoneNumber) 
+    {
+        if (PHONE_NUMBER_PATTERN.test(phoneNumber)) 
+        {
             this._phoneNumber = phoneNumber;
         }
-        else {
+        else 
+        {
             throw "phoneNumber is Incorrect";
         }
 
     }
-    get email() {
+    get email() 
+    {
         return this._email;
     }
-    set email(email) {
-        if (EMAIL_ID_PATTERN.test(email)) {
+    set email(email) 
+    {
+        if (EMAIL_ID_PATTERN.test(email)) 
+        {
             this._email = email;
         }
-        else {
+        else 
+        {
             throw "email is Incorrect";
         }
     }
 
-    toString()
+    toString() 
     {
-        return "first name: "+this.firstName+" ,last name: "+this.lastName+" ,Address: "+this.address+",city: "+this.city+
-        ",state: "+this.state+",city: "+this.city+",zip: "+this.zip+",phone number : "+this.phoneNumber+
-        ",email: "+this.email;
-
-
+        return "first name: " + this.firstName + " ,last name: " + this.lastName + " ,Address: " + this.address + ",city: " + this.city +
+            ",state: " + this.state + ",city: " + this.city + ",zip: " + this.zip + ",phone number : " + this.phoneNumber +
+            ",email: " + this.email;
 
     }
-
 
 }
 
 
-try {
+try 
+{
     var contact1 = new Contact("Phoebe", "Buffay", "abc street", "Neww York", "United States", "456890", "01 1234522234", "abc@example.com");
     var contact2 = new Contact("Joey", "Tribbiani", "eee street", "Paris", "United States", "123123", "01 3453451234", "joey@example.com");
     var contact3 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
     var contact4 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
-
-
 }
-catch (e) {
+catch (e)
+{
     console.error(e);
 }
 
 //UC3
 let addressBook = new Array();
-function addContact(contact) {
+function addContact(contact) 
+{
     //UC7
     let contactExists = addressBook.filter(existingContact => existingContact.firstName == contact.firstName
         && existingContact.lastName == contact.lastName)
         .reduce((totalContacts) => totalContacts + 1, 0);
 
-    if (contactExists == 0) {
+    if (contactExists == 0) 
+    {
         addressBook.push(contact);
     }
-    else {
+    else 
+    {
         console.log(" duplicate contact")
 
     }
@@ -160,7 +192,8 @@ addContact(contact4);
 console.log(addressBook);
 
 //UC4
-function editContact(name, fieldToReplace, valueToReplace) {
+function editContact(name, fieldToReplace, valueToReplace) 
+{
     let contactToEdit = addressBook.find((contact) => contact.firstName == name)
     contactToEdit.fieldToReplace = valueToReplace;
     switch (fieldToReplace.toLowerCase()) {
@@ -232,22 +265,27 @@ console.log(findAllInState)
 let contactToCityMap = new Map();
 let contactToStateMap = new Map();
 
-function mapContactToCityAndState(contact) {
-    if (contactToCityMap.has(contact.city)) {
+function mapContactToCityAndState(contact) 
+{
+    if (contactToCityMap.has(contact.city)) 
+    {
         let contactInCity = contactToCityMap.get(contact.city);
         contactInCity.push(contact.firstName + " " + contact.lastName);
     }
-    else {
+    else 
+    {
         let contactInCity = new Array();
         contactInCity.push(contact.firstName + " " + contact.lastName);
         contactToCityMap.set(contact.city, contactInCity);
     }
 
-    if (contactToStateMap.has(contact.state)) {
+    if (contactToStateMap.has(contact.state)) 
+    {
         let contactInState = contactToStateMap.get(contact.state);
         contactInState.push(contact.firstName + " " + contact.lastName);
     }
-    else {
+    else 
+    {
         let contactInState = new Array();
         contactInState.push(contact.firstName + " " + contact.lastName);
         contactToStateMap.set(contact.state, contactInState);
@@ -274,8 +312,22 @@ console.log(countByStateMap)
 
 //UC11
 console.log("Sorting by first name:\n")
-let  addressBookSortedByName=[...addressBook]
-addressBookSortedByName.sort((contact1,contact2) =>{ return contact1.firstName.localeCompare(contact2.firstName)});
-addressBookSortedByName.forEach(contact=>console.log(contact.toString()))
+let addressBookSortedByName = [...addressBook]
+addressBookSortedByName.sort((contact1, contact2) => { return contact1.firstName.localeCompare(contact2.firstName) });
+addressBookSortedByName.forEach(contact => console.log(contact.toString()))
 
+//UC12
+console.log("Sorting by city:\n")
+let addressBookSortedByCity = [...addressBook]
+addressBookSortedByCity.sort((contact1, contact2) => { return contact1.city.localeCompare(contact2.city) });
+addressBookSortedByCity.forEach(contact => console.log(contact.toString()))
 
+console.log("Sorting by state:\n")
+let addressBookSortedByState = [...addressBook]
+addressBookSortedByState.sort((contact1, contact2) => { return contact1.state.localeCompare(contact2.state) });
+addressBookSortedByState.forEach(contact => console.log(contact.toString()))
+
+console.log("Sorting by zip:\n")
+let addressBookSortedByZip = [...addressBook]
+addressBookSortedByZip.sort((contact1, contact2) => { return contact1.zip.localeCompare(contact2.zip) });
+addressBookSortedByZip.forEach(contact => console.log(contact.toString()))
