@@ -211,3 +211,12 @@ console.log(findInCity)
 console.log("Finding a contact in given state")
 let findInState=addressBook.filter(contact=>contact.state=="United States").find(contact=>contact.firstName=="Joey")
 console.log(findInState)
+
+//UC9
+console.log("view all contacts in given city");
+let findAllInCity=addressBook.filter(contact=>contact.city=="Paris")
+console.log(findAllInCity)
+
+console.log("view all contacts in given State");
+let findAllInState=addressBook.filter(contact=>contact.state=="United States")
+console.log(findAllInState)
