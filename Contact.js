@@ -114,7 +114,7 @@ class Contact {
 
 try {
     var contact1 = new Contact("Phoebe", "Buffay", "abc street", "Neww York", "United States", "456890", "01 1234522234", "abc@example.com");
-    var contact2 = new Contact("Joey", "Tribbiani", "eee street", "Abcd", "United States", "123123", "01 3453451234", "joey@example.com");
+    var contact2 = new Contact("Joey", "Tribbiani", "eee street", "Paris", "United States", "123123", "01 3453451234", "joey@example.com");
     var contact3 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
     var contact4 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
 
@@ -202,3 +202,12 @@ console.log(addressBook);
 let numberOfContacts= addressBook.reduce((totalContacts)=>totalContacts+1,0);
 console.log(numberOfContacts)
 
+
+//UC 8
+console.log("Finding a contact in given city")
+let findInCity=addressBook.filter(contact=>contact.city=="Paris").find(contact=>contact.firstName=="Joey")
+console.log(findInCity)
+
+console.log("Finding a contact in given state")
+let findInState=addressBook.filter(contact=>contact.state=="United States").find(contact=>contact.firstName=="Joey")
+console.log(findInState)
