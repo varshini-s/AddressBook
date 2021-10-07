@@ -142,6 +142,7 @@ catch (e) {
     console.error(e);
 }
 
+//UC3
 let addressBook = new Array();
 addressBook.push(contact1);
 addressBook.push(contact2);
@@ -149,6 +150,7 @@ addressBook.push(contact3);
 
 console.log(addressBook);
 
+//UC4
 function editContact(name, fieldToReplace, valueToReplace) {
     let contactToEdit = addressBook.find((contact) => contact.firstName == name)
     contactToEdit.fieldToReplace = valueToReplace;
@@ -184,6 +186,7 @@ function editContact(name, fieldToReplace, valueToReplace) {
 editContact("Joey", "lastName", "Williams");
 console.log(addressBook);
 
+//UC5
 const deleteContact = (name) => {
     let indexToDelete = addressBook
                       .findIndex((contact) => contact.firstName == name);
@@ -193,3 +196,6 @@ const deleteContact = (name) => {
 deleteContact("Ross");
 console.log(addressBook);
 
+//UC6
+let numberOfContacts= addressBook.reduce((totalContacts)=>totalContacts+1,0);
+console.log(numberOfContacts)
