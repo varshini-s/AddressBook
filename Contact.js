@@ -1,14 +1,12 @@
-const NAME_PATTERN=RegExp("^[A-Z][a-z]{2,}$");
-const ADDRESS_PATTERN=RegExp("^[A-Z0-9a-z ]{4,}$");
-const CITY_STATE_PATTERN=RegExp("^([A-Z][a-z]{3,})( )?([A-Z][a-z]{3,})?$");
+const NAME_PATTERN = RegExp("^[A-Z][a-z]{2,}$");
+const ADDRESS_PATTERN = RegExp("^[A-Z0-9a-z ]{4,}$");
+const CITY_STATE_PATTERN = RegExp("^([A-Z][a-z]{3,})( )?([A-Z][a-z]{3,})?$");
 const EMAIL_ID_PATTERN = RegExp("^[a-z0-9]+([+._-][a-z0-9]+){0,1}@[a-z0-9]+[.][a-z]{2,4}([.][a-z]{2,4}){0,1}$");
-const PHONE_NUMBER_PATTERN=RegExp("^[0-9]{2}[ ][0-9]{10}$");
-const ZIP_PATTERN=RegExp("[0-9]{3}[ ]?[0-9]{3}$");
-class Contact 
-{
+const PHONE_NUMBER_PATTERN = RegExp("^[0-9]{2}[ ][0-9]{10}$");
+const ZIP_PATTERN = RegExp("[0-9]{3}[ ]?[0-9]{3}$");
+class Contact {
 
-    constructor(...params) 
-    {
+    constructor(...params) {
         this.firstName = params[0]
         this.lastName = params[1]
         this.address = params[2]
@@ -19,125 +17,93 @@ class Contact
         this.email = params[7]
     }
 
-    get firstName()
-    {
+    get firstName() {
         return this._firstName;
     }
-    set firstName(firstName)
-    {
-        if (NAME_PATTERN.test(firstName))
-        {
+    set firstName(firstName) {
+        if (NAME_PATTERN.test(firstName)) {
             this._firstName = firstName;
         }
-        else 
-        {
+        else {
             throw "firstName is Incorrect";
         }
     }
-    get lastName()
-    {
+    get lastName() {
         return this._lastName;
     }
-    set lastName(lastName)
-    {
-        
-        if (NAME_PATTERN.test(lastName))
-        {
+    set lastName(lastName) {
+
+        if (NAME_PATTERN.test(lastName)) {
             this._lastName = lastName;
         }
-        else 
-        {
+        else {
             throw "lastName is Incorrect";
         }
     }
-    get address()
-    {
+    get address() {
         return this._address;
     }
-    set address(address)
-    {
-        if (ADDRESS_PATTERN.test(address))
-        {
+    set address(address) {
+        if (ADDRESS_PATTERN.test(address)) {
             this._address = address;
         }
-        else 
-        {
+        else {
             throw "address is Incorrect";
         }
     }
-    get city()
-    {
+    get city() {
         return this._city;
     }
-    set city(city)
-    {
-        if (CITY_STATE_PATTERN.test(city))
-        {
+    set city(city) {
+        if (CITY_STATE_PATTERN.test(city)) {
             this._city = city;
         }
-        else 
-        {
+        else {
             throw "city is Incorrect";
         }
     }
-    get state()
-    {
+    get state() {
         return this._state;
     }
-    set state(state)
-    {
-        if (CITY_STATE_PATTERN.test(state))
-        {
+    set state(state) {
+        if (CITY_STATE_PATTERN.test(state)) {
             this._state = state;
         }
-        else 
-        {
+        else {
             throw "state is Incorrect";
         }
     }
-    get zip()
-    {
+    get zip() {
         return this._zip;
     }
-    set zip(zip)
-    {
-        if (ZIP_PATTERN.test(zip))
-        {
+    set zip(zip) {
+        if (ZIP_PATTERN.test(zip)) {
             this._zip = zip;
         }
-        else 
-        {
+        else {
             throw "zip is Incorrect";
         }
     }
-    get phoneNumber()
-    {
+    get phoneNumber() {
         return this._phoneNumber;
     }
-    set phoneNumber(phoneNumber)
-    {
-        if (PHONE_NUMBER_PATTERN.test(phoneNumber))
-        {
+    set phoneNumber(phoneNumber) {
+        if (PHONE_NUMBER_PATTERN.test(phoneNumber)) {
             this._phoneNumber = phoneNumber;
         }
-        else 
-        {
+        else {
             throw "phoneNumber is Incorrect";
         }
 
     }
-    get email()
-    {
+    get email() {
         return this._email;
     }
-    set email(email)
-    {
-        if (EMAIL_ID_PATTERN.test(email))
-        {
+    set email(email) {
+        if (EMAIL_ID_PATTERN.test(email)) {
             this._email = email;
         }
-        else 
-        {
+        else {
             throw "email is Incorrect";
         }
     }
@@ -165,56 +131,65 @@ class Contact
 
 // }
 
-try 
-{
-    var contact1 = new Contact("Phoebe","Buffay","abc street","Neww York","United States","456890","01 1234522234","abc@example.com");
-    var contact2 = new Contact("Joey","Tribbiani","eee street","Abcd","United States","123123","01 3453451234","joey@example.com")
+try {
+    var contact1 = new Contact("Phoebe", "Buffay", "abc street", "Neww York", "United States", "456890", "01 1234522234", "abc@example.com");
+    var contact2 = new Contact("Joey", "Tribbiani", "eee street", "Abcd", "United States", "123123", "01 3453451234", "joey@example.com");
+    var contact3 = new Contact("Ross", "Geller", "rrr street", "Trade", "United States", "322344", "01 3453451234", "ross@example.com")
 
-} 
-catch (e)
-{
+
+}
+catch (e) {
     console.error(e);
 }
 
-let addressBook=new Array();
+let addressBook = new Array();
 addressBook.push(contact1);
 addressBook.push(contact2);
+addressBook.push(contact3);
+
 console.log(addressBook);
 
-function editContact(name,fieldToReplace,valueToReplace)
-{
-   let contactToEdit= addressBook.find((contact) => contact.firstName == name)
-   contactToEdit.fieldToReplace=valueToReplace;
-   switch (fieldToReplace.toLowerCase()) 
-   {
-       case "firstname":
-           contactToEdit.firstName = valueToReplace;
-           break;
-       case "lastname":
-           contactToEdit.lastName = valueToReplace;
-           break;
-       case "address":
-           contactToEdit.address = valueToReplace;
-           break;
-       case "city":
-           contactToEdit.city = valueToReplace;
-           break;
-       case "state":
-           contactToEdit.state = valueToReplace;
-           break;
-       case "zip":
-           contactToEdit.zip = valueToReplace;
-           break;
-       case "phonenumber":
-           contactToEdit.phoneNumber = valueToReplace;
-           break;
-       case "email":
-           contactToEdit.email = valueToReplace;
-           break;
-   
-   }
+function editContact(name, fieldToReplace, valueToReplace) {
+    let contactToEdit = addressBook.find((contact) => contact.firstName == name)
+    contactToEdit.fieldToReplace = valueToReplace;
+    switch (fieldToReplace.toLowerCase()) {
+        case "firstname":
+            contactToEdit.firstName = valueToReplace;
+            break;
+        case "lastname":
+            contactToEdit.lastName = valueToReplace;
+            break;
+        case "address":
+            contactToEdit.address = valueToReplace;
+            break;
+        case "city":
+            contactToEdit.city = valueToReplace;
+            break;
+        case "state":
+            contactToEdit.state = valueToReplace;
+            break;
+        case "zip":
+            contactToEdit.zip = valueToReplace;
+            break;
+        case "phonenumber":
+            contactToEdit.phoneNumber = valueToReplace;
+            break;
+        case "email":
+            contactToEdit.email = valueToReplace;
+            break;
+
+    }
 }
 
-
-editContact("Joey","lastName","Williams");
+editContact("Joey", "lastName", "Williams");
 console.log(addressBook);
+
+const deleteContact = (name) => {
+    let indexToDelete = addressBook
+                      .findIndex((contact) => contact.firstName == name);
+    addressBook.splice(indexToDelete, 1);
+};
+
+deleteContact("Ross");
+console.log(addressBook);
+
