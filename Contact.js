@@ -108,6 +108,16 @@ class Contact {
         }
     }
 
+    toString()
+    {
+        return "first name: "+this.firstName+" ,last name: "+this.lastName+" ,Address: "+this.address+",city: "+this.city+
+        ",state: "+this.state+",city: "+this.city+",zip: "+this.zip+",phone number : "+this.phoneNumber+
+        ",email: "+this.email;
+
+
+
+    }
+
 
 }
 
@@ -261,4 +271,11 @@ contactToStateMap.forEach((value, key, map) => {
 
 console.log(countByCityMap)
 console.log(countByStateMap)
+
+//UC11
+console.log("Sorting by first name:\n")
+let  addressBookSortedByName=[...addressBook]
+addressBookSortedByName.sort((contact1,contact2) =>{ return contact1.firstName.localeCompare(contact2.firstName)});
+addressBookSortedByName.forEach(contact=>console.log(contact.toString()))
+
 
